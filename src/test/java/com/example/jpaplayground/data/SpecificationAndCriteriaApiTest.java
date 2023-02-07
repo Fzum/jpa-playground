@@ -30,11 +30,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-// links:
-// https://www.javatpoint.com/jpa-criteria-group-by-clause
-// https://www.baeldung.com/hibernate-criteria-queries
-// https://docs.oracle.com/javaee/7/tutorial/persistence-criteria003.htm
-
 @DataJpaTest
 public class SpecificationAndCriteriaApiTest {
 
