@@ -12,3 +12,6 @@ Specifications are built on top of the Criteria API. Helpful links for Criteria 
 
 Here are some tests that play with Specifications and Criteria Queries:
 [SpecificationAndCriteriaApiTest.java](src%2Ftest%2Fjava%2Fcom%2Fexample%2Fjpaplayground%2Fdata%2FSpecificationAndCriteriaApiTest.java)
+
+The Specifications for the School Entity are
+here: [School.java](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fjpaplayground%2Fmodel%2FSchool.java)
