@@ -83,7 +83,8 @@ public class SpecificationAndCriteriaApiTest {
 
     private final static Function<School, Stream<LocalDate>> getPupilsInSchoolSince = s -> s.getPupils()
         .stream()
-        .map(a -> a.getStatistics().getInSchoolSince());
+        .map(Pupil::getStatistics)
+        .map(Statistics::getInSchoolSince);
 
     @Test
     @DisplayName("should group by school and order by school having the pupil with the min inSchoolSince")
