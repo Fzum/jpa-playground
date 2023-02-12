@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Path;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.Builder;
 import lombok.Getter;
@@ -59,14 +59,9 @@ public class School {
       return cq.getRestriction();
     };
 
-    public static final Specification<School> hasNameOneTwoOrThree = (root, cq, cb) -> {
-      Path<String> name = root.get("name");
-      return cb.or(
-          cb.like(name, "1"),
-          cb.like(name, "2"),
-          cb.like(name, "3")
-      );
-    };
+
+    public static final Specification<School> hasNameOneTwoOrThree = (root, query, builder) ->
+        builder.or(root.get("name").in(List.of("1", "2", "3")));
   }
 
 
