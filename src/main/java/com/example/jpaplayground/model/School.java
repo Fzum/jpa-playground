@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
 import java.util.HashSet;
 import java.util.List;
@@ -45,18 +44,15 @@ public class School {
 
   public static class Specifications {
 
-    public static final Specification<School> groupBySchoolOrderByInSchoolSinceAsc = (root, cq, cb) -> {
+    public static final Specification<School> groupBySchoolOrderByInSchoolSinceAsc = (root, query, builder) -> {
       Join<Pupil, Statistics> statisticsOfPupil = root
           .join("pupils")
           .join("statistics");
 
-      Expression<Number> minInSchoolSince = cb.min(statisticsOfPupil.get("inSchoolSince"));
-
-      cq.multiselect(root, minInSchoolSince)
+      return query
           .groupBy(root)
-          .orderBy(cb.asc(minInSchoolSince));
-
-      return cq.getRestriction();
+          .orderBy(builder.asc(builder.min(statisticsOfPupil.get("inSchoolSince"))))
+          .getGroupRestriction();
     };
 
 
